@@ -3,8 +3,8 @@
 #include <cstdio>
 
 // LibLo (OSC)
-#include <lo/lo.h>
-#include <lo/lo_cpp.h>
+#include "lo/lo.h"
+#include "lo/lo_cpp.h"
 
 #define PORT 8000
 
