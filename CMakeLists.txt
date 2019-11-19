@@ -1,7 +1,13 @@
 cmake_minimum_required(VERSION 3.10)
 project(loexp)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
+option(COVERAGE "Enable code coverage reporting" FALSE)
+
+if (COVERAGE)
+    # Disable code optimizations
+    add_compile_options(--coverage -O0)
+    MESSAGE(STATUS "Coverage enabled!")
+endif()
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -32,14 +38,26 @@ set (CONAN_SETTINGS SETTINGS compiler.libcxx=libstdc++11)
 conan_cmake_run(
     REQUIRES
         liblo/0.30@vidrevolt/stable
+        gtest/1.8.1@bincrafters/stable
     BASIC_SETUP
         ${CONAN_SETTINGS}
     BUILD missing
 )
 
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp)
 
 target_compile_options(${PROJECT_NAME} PRIVATE "-Wextra" "-Wall")
-
-# Libraries brought in by conan dependency manager
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
+target_link_libraries(${PROJECT_NAME} --coverage)
+
+#
+# Testing!
+#
+enable_testing()
+
+add_executable(tests test/main.cpp)
+include(GoogleTest)
+gtest_discover_tests(tests)
+target_compile_options(tests PRIVATE "-Wextra" "-Wall")
+target_link_libraries(tests ${CONAN_LIBS})
+target_link_libraries(tests --coverage)
