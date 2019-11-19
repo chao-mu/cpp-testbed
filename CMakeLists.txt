@@ -39,7 +39,7 @@ conan_cmake_run(
 
 add_executable(${PROJECT_NAME} main.cpp)
 
-target_compile_options(${PROJECT_NAME} PRIVATE "-Wextra" "-Wall" "-pedantic-errors")
+target_compile_options(${PROJECT_NAME} PRIVATE "-Wextra" "-Wall")
 
 # Libraries brought in by conan dependency manager
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
