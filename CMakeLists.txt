@@ -43,4 +43,3 @@ target_compile_options(${PROJECT_NAME} PRIVATE "-Wextra" "-Werror" "-Wall" "-ped
 
 # Libraries brought in by conan dependency manager
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
-target_include_directories(${PROJECT_NAME} PRIVATE ${CONAN_INCLUDE_DIRS})
