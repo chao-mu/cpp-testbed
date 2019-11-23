@@ -6,6 +6,9 @@
 #include <lo/lo.h>
 #include <lo/lo_cpp.h>
 
+// Unrelated me testing things
+#include <sol/sol.hpp>
+
 #define PORT 8000
 
 int main(int /* argc */, const char** /* argv */) {
