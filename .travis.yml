@@ -7,7 +7,7 @@ compiler:
     - clang
 
 before_install:
-    - sudo pip install conan
+    - sudo pip install conan liblua5.3-dev
 
 before_script:
     - mkdir build
