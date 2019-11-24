@@ -7,6 +7,7 @@
 #include <lo/lo_cpp.h>
 
 // Unrelated me testing things
+#include "lua5.3/lua.hpp"
 #include <sol/sol.hpp>
 
 #define PORT 8000
