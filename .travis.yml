@@ -8,6 +8,8 @@ compiler:
 
 before_install:
     - sudo apt-get install liblua5.3-dev lua5.3
+    - sudo updatedb
+    - sudo locate lua.hpp
     - sudo pip install conan
 
 before_script:
