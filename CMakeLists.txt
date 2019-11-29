@@ -37,6 +37,7 @@ conan_add_remote(
 set (CONAN_SETTINGS SETTINGS compiler.libcxx=libstdc++11)
 conan_cmake_run(
     REQUIRES
+        tclap/1.2.2@vidrevolt/stable
         liblo/0.30@vidrevolt/stable
         sol/3.0.3@vidrevolt/stable
         gtest/1.8.1@bincrafters/stable
