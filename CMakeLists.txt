@@ -51,6 +51,11 @@ target_compile_options(${PROJECT_NAME} PRIVATE "-Wextra" "-Wall")
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
 target_link_libraries(${PROJECT_NAME} --coverage)
 
+# Lua
+find_package(Lua REQUIRED)
+target_include_directories(${PROJECT_NAME} PRIVATE ${LUA_INCLUDE_DIR})
+target_link_libraries(${PROJECT_NAME} ${LUA_LIBRARY})
+
 #
 # Testing!
 #
